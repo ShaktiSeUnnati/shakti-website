@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>शक्ति — हर घर में एक हुनर है</title>
+<link href="https://fonts.googleapis.com/css2?family=Tiro+Devanagari+Hindi:ital@0;1&family=Hind:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css" rel="stylesheet">
+<style>
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{font-family:'Hind',sans-serif;background:#FDFAF6;color:#1C3328;overflow-x:hidden}
+
+  /* NAV */
+  nav{display:flex;justify-content:space-between;align-items:center;padding:1rem 2rem;background:rgba(253,250,246,0.97);border-bottom:0.5px solid #E2D9CE;position:sticky;top:0;z-index:99}
+  .nav-logo{font-family:'Tiro Devanagari Hindi',serif;font-size:24px;color:#2D4A3E}
+  .nav-logo span{color:#C4965A}
+  .nav-links{display:flex;gap:1.5rem;list-style:none;font-size:13px;color:#5A6A62}
+  .nav-links li{cursor:pointer}
+  .nav-right{display:flex;gap:0.75rem;align-items:center}
+  .nav-wa{background:#25D366;color:#fff;border:none;padding:0.45rem 1rem;font-family:'Hind',sans-serif;font-size:13px;font-weight:500;border-radius:2px;cursor:pointer;display:flex;align-items:center;gap:6px;text-decoration:none}
+  .nav-cta{background:#2D4A3E;color:#FAF3E8;border:none;padding:0.45rem 1rem;font-family:'Hind',sans-serif;font-size:13px;font-weight:500;border-radius:2px;cursor:pointer}
+
+  /* HERO */
+  .hero{display:grid;grid-template-columns:1fr 1fr;min-height:88vh;align-items:stretch}
+  .hero-left{position:relative;overflow:hidden;padding:3.5rem 2.5rem 3.5rem 3rem;background:#FDFAF6;display:flex;align-items:center}
+  .hero-bg-symbol{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);pointer-events:none;z-index:0}
+  .hero-text-content{position:relative;z-index:2;width:100%}
+  .hero-origin{display:inline-flex;align-items:center;gap:6px;background:rgba(243,237,227,0.95);border:0.5px solid #D6CBBE;padding:0.3rem 0.85rem;border-radius:40px;font-size:12px;color:#7A6A5A;margin-bottom:1.25rem}
+  .hero-eyebrow{font-size:11px;font-weight:500;letter-spacing:1px;color:#C4965A;text-transform:uppercase;margin-bottom:1rem}
+  .hero-headline{font-family:'Tiro Devanagari Hindi',serif;font-size:46px;line-height:1.2;color:#1C3328;margin-bottom:1.25rem}
+  .hero-headline em{color:#C4965A;font-style:italic}
+  .hero-sub{font-size:15px;line-height:1.8;color:#4A5A52;max-width:400px;margin-bottom:1rem}
+
+  .quick-paths{display:flex;flex-direction:column;gap:0.6rem;margin-bottom:2rem}
+  .quick-path{display:flex;align-items:center;gap:0.75rem;padding:0.65rem 1rem;border:0.5px solid #D6CBBE;border-radius:4px;background:rgba(253,250,246,0.9);cursor:pointer;transition:border-color 0.15s}
+  .quick-path:hover{border-color:#C4965A}
+  .qp-icon{width:32px;height:32px;border-radius:50%;background:#F3EDE3;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+  .qp-icon i{font-size:15px;color:#C4965A}
+  .qp-text{font-size:14px;color:#1C3328;font-weight:500}
+  .qp-sub{font-size:12px;color:#8A9E96}
+  .qp-arrow{margin-left:auto;font-size:14px;color:#C4965A}
+
+  .btn-wa{background:#25D366;color:#fff;border:none;padding:0.75rem 1.5rem;font-family:'Hind',sans-serif;font-size:15px;font-weight:600;border-radius:2px;cursor:pointer;display:inline-flex;align-items:center;gap:8px;text-decoration:none}
+  .btn-ghost{background:transparent;color:#2D4A3E;padding:0.75rem 1rem;font-family:'Hind',sans-serif;font-size:14px;border:none;cursor:pointer;text-decoration:underline;text-underline-offset:3px}
+
+  .hero-right{background:#2D4A3E;display:flex;flex-direction:column;justify-content:center;align-items:center;padding:2.5rem;position:relative;overflow:hidden;gap:2.5rem;min-height:88vh}
+  .hero-right-bg{position:absolute;top:0;left:0;right:0;bottom:0;display:flex;align-items:center;justify-content:center;pointer-events:none}
+  .hero-tagline-block{position:relative;z-index:2;text-align:center}
+  .hero-tagline-line{width:48px;height:2px;background:#C4965A;margin:1rem auto}
+  .hero-tagline-main{font-family:'Tiro Devanagari Hindi',serif;font-size:38px;color:#FAF3E8;line-height:1.35;margin-bottom:0.5rem}
+  .hero-tagline-sub{font-size:14px;color:#A8BFB5;letter-spacing:0.5px}
+  .hero-stat-row{display:flex;gap:2rem;position:relative;z-index:2}
+  .hero-stat{border-top:1px solid rgba(196,150,90,0.5);padding-top:0.85rem;text-align:center}
+  .hero-stat-num{font-family:'Tiro Devanagari Hindi',serif;font-size:36px;color:#FAF3E8;line-height:1}
+  .hero-stat-label{font-size:12px;color:#A8BFB5;margin-top:0.3rem;line-height:1.4}
+
+  /* TRUST BANNER */
+  .trust-banner{background:#1C3328;padding:1.25rem 3rem;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1rem}
+  .trust-item{display:flex;align-items:center;gap:0.6rem;color:#A8BFB5;font-size:13px}
+  .trust-item i{color:#C4965A;font-size:16px}
+  .trust-item strong{color:#FAF3E8}
+
+  /* SECTIONS */
+  .sec{padding:4.5rem 3rem}
+  .sec.alt{background:#F3EDE3}
+  .sec.dark{background:#1C3328}
+  .sec-label{font-size:11px;font-weight:500;letter-spacing:1px;color:#C4965A;text-transform:uppercase;margin-bottom:0.65rem}
+  .sec-title{font-family:'Tiro Devanagari Hindi',serif;font-size:34px;color:#1C3328;line-height:1.3;max-width:560px;margin-bottom:0.75rem}
+  .sec-title.light{color:#FAF3E8}
+  .sec-sub{font-size:14px;color:#5A6A62;line-height:1.7;max-width:540px;margin-bottom:2.5rem}
+  .sec-sub.light{color:#A8BFB5}
+
+  /* CATEGORIES */
+  .cat-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5px;background:#D6CBBE}
+  .cat-card{background:#FDFAF6;padding:1.75rem;display:flex;flex-direction:column;gap:0.85rem}
+  .cat-card.alt{background:#F3EDE3}
+  .cat-icon-row{display:flex;align-items:center;gap:0.7rem}
+  .cat-icon{width:36px;height:36px;border-radius:50%;border:1px solid #C4965A;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+  .cat-icon i{font-size:16px;color:#C4965A}
+  .cat-name{font-family:'Tiro Devanagari Hindi',serif;font-size:19px;color:#1C3328;line-height:1.2}
+  .cat-desc{font-size:13px;line-height:1.7;color:#5A6A62;flex:1}
+  .cat-chips{display:flex;flex-wrap:wrap;gap:0.35rem}
+  .chip{padding:0.3rem 0.75rem;border-radius:40px;font-size:12px;border:0.5px solid #D6CBBE;color:#5A6A62;background:#FDFAF6}
+  .cat-link{font-size:13px;color:#2D4A3E;font-weight:600;border-bottom:1px solid #C4965A;padding-bottom:1px;align-self:flex-start;cursor:pointer;text-decoration:none}
+
+  /* HOW IT WORKS */
+  .how-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1.5px;background:rgba(196,150,90,0.2);margin-top:2.5rem}
+  .how-card{background:#243D31;padding:1.75rem;display:flex;flex-direction:column;gap:0.75rem}
+  .how-step{font-size:11px;letter-spacing:1px;color:#C4965A;text-transform:uppercase}
+  .how-icon-i{font-size:26px;color:#C4965A}
+  .how-title{font-family:'Tiro Devanagari Hindi',serif;font-size:18px;color:#FAF3E8;line-height:1.3}
+  .how-desc{font-size:13px;color:#A8BFB5;line-height:1.6}
+
+  /* TRUST Q&A */
+  .trust-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5px;background:#D6CBBE;margin-top:2.5rem}
+  .trust-card{background:#FDFAF6;padding:2rem}
+  .trust-card.alt{background:#F3EDE3}
+  .trust-icon{width:40px;height:40px;border-radius:50%;border:1px solid #C4965A;display:flex;align-items:center;justify-content:center;margin-bottom:1rem}
+  .trust-icon i{font-size:18px;color:#C4965A}
+  .trust-title{font-family:'Tiro Devanagari Hindi',serif;font-size:19px;color:#1C3328;margin-bottom:0.5rem}
+  .trust-desc{font-size:13px;color:#5A6A62;line-height:1.7}
+
+  /* PROVIDERS */
+  .prov-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5px;background:rgba(196,150,90,0.2);margin-top:2.5rem}
+  .prov-card{background:#243D31;padding:1.75rem}
+  .prov-avatar{width:44px;height:44px;border-radius:50%;margin-bottom:0.85rem;display:flex;align-items:center;justify-content:center;font-family:'Tiro Devanagari Hindi',serif;font-size:18px}
+  .av-g{background:#2D5A48;color:#A8D4BC}
+  .av-go{background:#4A3520;color:#C4965A}
+  .av-p{background:#4A2A3A;color:#D4A0BC}
+  .av-b{background:#1A3545;color:#90B8D0}
+  .av-r{background:#3A2A1A;color:#D4A060}
+  .av-sp{background:#4A2A1A;color:#E8A060}
+  .prov-name{font-size:14px;font-weight:600;color:#FAF3E8;margin-bottom:0.2rem}
+  .prov-skill{font-size:12px;color:#C4965A;margin-bottom:0.6rem}
+  .prov-desc{font-size:13px;line-height:1.6;color:#A8BFB5}
+  .prov-loc{margin-top:0.6rem;font-size:12px;color:#6A8A80;display:flex;align-items:center;gap:4px}
+  .prov-wa{margin-top:0.85rem;display:inline-flex;align-items:center;gap:5px;background:rgba(37,211,102,0.15);border:0.5px solid rgba(37,211,102,0.3);color:#25D366;padding:0.3rem 0.75rem;border-radius:40px;font-size:12px;cursor:pointer;text-decoration:none}
+
+  /* MOBILE CTA */
+  .mobile-cta{background:#2D4A3E;padding:1.5rem 2rem;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1rem}
+  .mobile-cta-text{font-family:'Tiro Devanagari Hindi',serif;font-size:20px;color:#FAF3E8}
+  .mobile-cta-sub{font-size:13px;color:#A8BFB5;margin-top:0.25rem}
+
+  /* JOIN */
+  .join-section{background:#1C3328;padding:4.5rem 3rem;text-align:center;position:relative;overflow:hidden}
+  .join-bg{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);pointer-events:none;opacity:0.06}
+  .join-headline{font-family:'Tiro Devanagari Hindi',serif;font-size:38px;color:#FAF3E8;margin-bottom:0.5rem;line-height:1.3;position:relative;z-index:2}
+  .join-sub{font-size:15px;color:#A8BFB5;margin-bottom:2rem;position:relative;z-index:2}
+  .join-tabs{display:flex;gap:0.75rem;justify-content:center;margin-bottom:2rem;flex-wrap:wrap;position:relative;z-index:2}
+  .join-tab{font-size:13px;color:#A8BFB5;padding:0.4rem 1rem;border-radius:40px;border:0.5px solid transparent;cursor:pointer}
+  .join-tab.active{color:#C4965A;border-color:rgba(196,150,90,0.5)}
+  .join-options{display:grid;grid-template-columns:1fr 1fr;gap:1rem;max-width:500px;margin:0 auto;position:relative;z-index:2}
+  .join-wa-big{background:#25D366;color:#fff;border:none;padding:1rem 1.5rem;font-family:'Hind',sans-serif;font-size:15px;font-weight:600;border-radius:2px;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:8px;flex-direction:column;text-decoration:none}
+  .join-email-wrap{display:flex;flex-direction:column;gap:0.5rem}
+  .join-input{background:rgba(250,243,232,0.1);border:0.5px solid rgba(196,150,90,0.4);padding:0.75rem 1rem;font-family:'Hind',sans-serif;font-size:14px;color:#FAF3E8;border-radius:2px;outline:none;width:100%}
+  .join-input::placeholder{color:#6A8A80}
+  .join-btn{background:#C4965A;color:#1C3328;padding:0.75rem;font-family:'Hind',sans-serif;font-size:14px;font-weight:600;border:none;border-radius:2px;cursor:pointer}
+
+  /* FOOTER */
+  footer{padding:2rem 3rem;border-top:0.5px solid #E2D9CE;display:flex;justify-content:space-between;align-items:center;background:#FDFAF6;flex-wrap:wrap;gap:1rem}
+  .footer-logo{font-family:'Tiro Devanagari Hindi',serif;font-size:20px;color:#2D4A3E}
+  .footer-logo span{color:#C4965A}
+  .footer-note{font-size:12px;color:#8A9E96}
+  .footer-origin{font-size:12px;color:#C4965A;display:flex;align-items:center;gap:4px}
+
+  /* MOBILE RESPONSIVE */
+  @media(max-width:768px){
+    .hero{grid-template-columns:1fr}
+    .hero-right{min-height:50vh}
+    .hero-tagline-main{font-size:28px}
+    .hero-headline{font-size:34px}
+    .cat-grid{grid-template-columns:1fr}
+    .how-grid{grid-template-columns:1fr 1fr}
+    .trust-grid{grid-template-columns:1fr}
+    .prov-grid{grid-template-columns:1fr}
+    .join-options{grid-template-columns:1fr}
+    .nav-links{display:none}
+    .trust-banner{justify-content:flex-start}
+    .sec{padding:3rem 1.5rem}
+    nav{padding:1rem 1.25rem}
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">शक्ति<span>।</span></div>
+  <ul class="nav-links">
+    <li>हुनर बाज़ार</li>
+    <li>सीखें</li>
+    <li>करियर</li>
+    <li>हमारे बारे में</li>
+  </ul>
+  <div class="nav-right">
+    <a href="https://wa.me/91XXXXXXXXXX" class="nav-wa" target="_blank">
+      <i class="ti ti-brand-whatsapp"></i> WhatsApp पर जुड़ें
+    </a>
+    <button class="nav-cta">दर्ज करें</button>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-left">
+    <!-- Bindi + Makeup background symbol -->
+    <div class="hero-bg-symbol">
+      <svg width="500" height="580" viewBox="0 0 500 580" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <g opacity="0.07" fill="#C4965A">
+          <circle cx="250" cy="290" r="210" fill="none" stroke="#C4965A" stroke-width="0.8"/>
+          <circle cx="250" cy="290" r="180" fill="none" stroke="#C4965A" stroke-width="0.4"/>
+          <ellipse cx="250" cy="110" rx="14" ry="46" transform="rotate(0 250 290)"/>
+          <ellipse cx="250" cy="110" rx="14" ry="46" transform="rotate(30 250 290)"/>
+          <ellipse cx="250" cy="110" rx="14" ry="46" transform="rotate(60 250 290)"/>
+          <ellipse cx="250" cy="110" rx="14" ry="46" transform="rotate(90 250 290)"/>
+          <ellipse cx="250" cy="110" rx="14" ry="46" transform="rotate(120 250 290)"/>
+          <ellipse cx="250" cy="110" rx="14" ry="46" transform="rotate(150 250 290)"/>
+          <ellipse cx="250" cy="110" rx="14" ry="46" transform="rotate(180 250 290)"/>
+          <ellipse cx="250" cy="110" rx="14" ry="46" transform="rotate(210 250 290)"/>
+          <ellipse cx="250" cy="110" rx="14" ry="46" transform="rotate(240 250 290)"/>
+          <ellipse cx="250" cy="110" rx="14" ry="46" transform="rotate(270 250 290)"/>
+          <ellipse cx="250" cy="110" rx="14" ry="46" transform="rotate(300 250 290)"/>
+          <ellipse cx="250" cy="110" rx="14" ry="46" transform="rotate(330 250 290)"/>
+          <circle cx="250" cy="290" r="30"/>
+          <circle cx="250" cy="290" r="18"/>
+          <circle cx="250" cy="290" r="8"/>
+          <path d="M95,258 Q128,238 163,248 Q128,270 95,258Z"/>
+          <path d="M95,258 Q128,275 163,265 Q128,255 95,258Z"/>
+          <ellipse cx="135" cy="255" rx="8" ry="10"/>
+          <path d="M405,258 Q372,238 337,248 Q372,270 405,258Z"/>
+          <path d="M405,258 Q372,275 337,265 Q372,255 405,258Z"/>
+          <ellipse cx="365" cy="255" rx="8" ry="10"/>
+          <path d="M250,262 Q250,228 250,208" fill="none" stroke="#C4965A" stroke-width="1.5" stroke-dasharray="3,3"/>
+          <circle cx="250" cy="203" r="7"/>
+          <circle cx="250" cy="191" r="4"/>
+          <path d="M246,191 Q232,184 222,174" fill="none" stroke="#C4965A" stroke-width="1" stroke-dasharray="2,3"/>
+          <path d="M254,191 Q268,184 278,174" fill="none" stroke="#C4965A" stroke-width="1" stroke-dasharray="2,3"/>
+          <circle cx="220" cy="173" r="5"/>
+          <circle cx="280" cy="173" r="5"/>
+          <rect x="222" y="148" width="56" height="4" rx="2"/>
+          <circle cx="217" cy="150" r="5"/>
+          <circle cx="283" cy="150" r="5"/>
+          <path d="M55,370 Q40,400 55,430" fill="none" stroke="#C4965A" stroke-width="5" stroke-linecap="round"/>
+          <path d="M63,368 Q47,400 63,432" fill="none" stroke="#C4965A" stroke-width="4" stroke-linecap="round"/>
+          <path d="M445,370 Q460,400 445,430" fill="none" stroke="#C4965A" stroke-width="5" stroke-linecap="round"/>
+          <path d="M437,368 Q453,400 437,432" fill="none" stroke="#C4965A" stroke-width="4" stroke-linecap="round"/>
+          <circle cx="250" cy="86" r="4"/>
+          <circle cx="311" cy="103" r="3"/>
+          <circle cx="354" cy="143" r="3"/>
+          <circle cx="373" cy="200" r="3"/>
+          <circle cx="189" cy="103" r="3"/>
+          <circle cx="146" cy="143" r="3"/>
+          <circle cx="127" cy="200" r="3"/>
+        </g>
+      </svg>
+    </div>
+
+    <div class="hero-text-content">
+      <div class="hero-origin"><i class="ti ti-map-pin" style="font-size:12px;color:#C4965A"></i> बरेली, उ.प्र. से शुरुआत — दुनिया तक पहुँच</div>
+      <p class="hero-eyebrow">हर महिला के लिए एक मंच</p>
+      <h1 class="hero-headline">आपका हुनर।<br><em>आपकी कमाई।</em><br>आपकी शर्तों पर।</h1>
+      <p class="hero-sub">आप यहाँ किसलिए हैं? नीचे चुनें —</p>
+      <div class="quick-paths">
+        <div class="quick-path">
+          <div class="qp-icon"><i class="ti ti-hand-finger"></i></div>
+          <div><div class="qp-text">मेरे पास हुनर है, मैं कमाना चाहती हूँ</div><div class="qp-sub">अचार, मेहंदी, सिलाई, पढ़ाना...</div></div>
+          <span class="qp-arrow">→</span>
+        </div>
+        <div class="quick-path">
+          <div class="qp-icon"><i class="ti ti-plant"></i></div>
+          <div><div class="qp-text">मुझे कोई हुनर सीखना है</div><div class="qp-sub">शुरुआत से, अपनी गति से</div></div>
+          <span class="qp-arrow">→</span>
+        </div>
+        <div class="quick-path">
+          <div class="qp-icon"><i class="ti ti-users"></i></div>
+          <div><div class="qp-text">मुझे किसी का हुनर चाहिए</div><div class="qp-sub">मेहंदी, ट्यूटर, खाना, दर्ज़ी...</div></div>
+          <span class="qp-arrow">→</span>
+        </div>
+      </div>
+      <div style="display:flex;gap:0.75rem;align-items:center;flex-wrap:wrap">
+        <a href="https://wa.me/91XXXXXXXXXX" class="btn-wa" target="_blank"><i class="ti ti-brand-whatsapp"></i> WhatsApp पर जुड़ें</a>
+        <button class="btn-ghost">और जानें →</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- RIGHT PANEL -->
+  <div class="hero-right">
+    <div class="hero-right-bg">
+      <svg width="380" height="500" viewBox="0 0 380 500" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <g opacity="0.13" fill="#C4965A">
+          <circle cx="190" cy="240" r="165" fill="none" stroke="#C4965A" stroke-width="0.8"/>
+          <circle cx="190" cy="240" r="140" fill="none" stroke="#C4965A" stroke-width="0.4"/>
+          <ellipse cx="190" cy="105" rx="15" ry="48" transform="rotate(0 190 240)"/>
+          <ellipse cx="190" cy="105" rx="15" ry="48" transform="rotate(45 190 240)"/>
+          <ellipse cx="190" cy="105" rx="15" ry="48" transform="rotate(90 190 240)"/>
+          <ellipse cx="190" cy="105" rx="15" ry="48" transform="rotate(135 190 240)"/>
+          <ellipse cx="190" cy="105" rx="15" ry="48" transform="rotate(180 190 240)"/>
+          <ellipse cx="190" cy="105" rx="15" ry="48" transform="rotate(225 190 240)"/>
+          <ellipse cx="190" cy="105" rx="15" ry="48" transform="rotate(270 190 240)"/>
+          <ellipse cx="190" cy="105" rx="15" ry="48" transform="rotate(315 190 240)"/>
+          <circle cx="190" cy="240" r="34"/>
+          <circle cx="190" cy="240" r="20"/>
+          <circle cx="190" cy="240" r="8"/>
+          <path d="M60,210 Q94,190 128,202 Q94,222 60,210Z" opacity="0.6"/>
+          <ellipse cx="99" cy="204" rx="9" ry="11" opacity="0.7"/>
+          <path d="M320,210 Q286,190 252,202 Q286,222 320,210Z" opacity="0.6"/>
+          <ellipse cx="281" cy="204" rx="9" ry="11" opacity="0.7"/>
+          <circle cx="190" cy="78" r="4" opacity="0.5"/>
+          <circle cx="240" cy="90" r="3" opacity="0.4"/>
+          <circle cx="280" cy="118" r="3" opacity="0.4"/>
+          <circle cx="140" cy="90" r="3" opacity="0.4"/>
+          <circle cx="100" cy="118" r="3" opacity="0.4"/>
+        </g>
+      </svg>
+    </div>
+    <div class="hero-tagline-block">
+      <div class="hero-tagline-line"></div>
+      <div class="hero-tagline-main">हर घर में<br>एक हुनर है</div>
+      <div class="hero-tagline-sub">शक्ति उसे दुनिया तक पहुँचाती है</div>
+      <div class="hero-tagline-line"></div>
+    </div>
+    <div class="hero-stat-row">
+      <div class="hero-stat"><div class="hero-stat-num">२०+</div><div class="hero-stat-label">हुनर<br>श्रेणियाँ</div></div>
+      <div class="hero-stat"><div class="hero-stat-num">मुफ़्त</div><div class="hero-stat-label">दर्ज करना<br>बिल्कुल मुफ़्त</div></div>
+      <div class="hero-stat"><div class="hero-stat-num">UP</div><div class="hero-stat-label">से शुरुआत,<br>देश भर में</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- TRUST BANNER -->
+<div class="trust-banner">
+  <div class="trust-item"><i class="ti ti-shield-check"></i><span><strong>सुरक्षित मंच</strong> — महिलाओं द्वारा, महिलाओं के लिए</span></div>
+  <div class="trust-item"><i class="ti ti-currency-rupee"></i><span><strong>दर्ज करना मुफ़्त</strong> — कोई hidden charge नहीं</span></div>
+  <div class="trust-item"><i class="ti ti-brand-whatsapp"></i><span><strong>WhatsApp support</strong> — सीधे बात करें</span></div>
+  <div class="trust-item"><i class="ti ti-map-pin"></i><span><strong>बरेली से बना</strong> — UP की अपनी पहचान</span></div>
+</div>
+
+<!-- CATEGORIES -->
+<section class="sec">
+  <p class="sec-label">सभी हुनर की श्रेणियाँ</p>
+  <h2 class="sec-title">शक्ति पर हर हुनर बराबर है</h2>
+  <p class="sec-sub">अचार बनाना उतना ही कीमती है जितना डेटा साइंस। यहाँ कोई हुनर छोटा नहीं।</p>
+  <div class="cat-grid">
+    <div class="cat-card"><div class="cat-icon-row"><div class="cat-icon"><i class="ti ti-bottle"></i></div><div class="cat-name">अचार व खाद्य कला</div></div><p class="cat-desc">घर का बना अचार, मुरब्बा, चटनी, पापड़ — सालों की रेसिपी अब कमाई।</p><div class="cat-chips"><span class="chip">आम अचार</span><span class="chip">मिर्च</span><span class="chip">नींबू</span><span class="chip">मुरब्बा</span></div><a class="cat-link">जुड़ें →</a></div>
+    <div class="cat-card alt"><div class="cat-icon-row"><div class="cat-icon"><i class="ti ti-brush"></i></div><div class="cat-name">चित्रकारी व आर्ट</div></div><p class="cat-desc">वॉटरकलर, मधुबनी, ऐक्रेलिक — पेंटिंग बेचें या सिखाएँ।</p><div class="cat-chips"><span class="chip">वॉटरकलर</span><span class="chip">मधुबनी</span><span class="chip">रंगोली</span></div><a class="cat-link">जुड़ें →</a></div>
+    <div class="cat-card"><div class="cat-icon-row"><div class="cat-icon"><i class="ti ti-needle-thread"></i></div><div class="cat-name">सिलाई व कढ़ाई</div></div><p class="cat-desc">सलवार सूट, ब्लाउज़, कढ़ाई — घर बैठे ऑर्डर लें।</p><div class="cat-chips"><span class="chip">सिलाई</span><span class="chip">कढ़ाई</span><span class="chip">बुनाई</span></div><a class="cat-link">जुड़ें →</a></div>
+    <div class="cat-card alt"><div class="cat-icon-row"><div class="cat-icon"><i class="ti ti-sparkles"></i></div><div class="cat-name">मेहंदी व मेकअप</div></div><p class="cat-desc">ब्राइडल मेहंदी, पार्टी मेकअप, नेल आर्ट — हर उत्सव में माँग।</p><div class="cat-chips"><span class="chip">मेहंदी</span><span class="chip">ब्राइडल मेकअप</span><span class="chip">नेल आर्ट</span></div><a class="cat-link">जुड़ें →</a></div>
+    <div class="cat-card"><div class="cat-icon-row"><div class="cat-icon"><i class="ti ti-tools-kitchen-2"></i></div><div class="cat-name">खाना व टिफिन</div></div><p class="cat-desc">रोज़ाना टिफिन, पार्टी खाना, मिठाई — घर जैसा स्वाद।</p><div class="cat-chips"><span class="chip">टिफिन</span><span class="chip">केटरिंग</span><span class="chip">मिठाई</span></div><a class="cat-link">जुड़ें →</a></div>
+    <div class="cat-card alt"><div class="cat-icon-row"><div class="cat-icon"><i class="ti ti-home-heart"></i></div><div class="cat-name">घरेलू सेवाएँ</div></div><p class="cat-desc">सफ़ाई, धुलाई, इस्त्री, बच्चों की देखभाल — रोज़ की ज़रूरत।</p><div class="cat-chips"><span class="chip">सफ़ाई</span><span class="chip">धुलाई</span><span class="chip">इस्त्री</span></div><a class="cat-link">जुड़ें →</a></div>
+    <div class="cat-card"><div class="cat-icon-row"><div class="cat-icon"><i class="ti ti-school"></i></div><div class="cat-name">शिक्षा व ट्यूशन</div></div><p class="cat-desc">गणित, विज्ञान, अंग्रेज़ी — स्कूल से बड़ों तक।</p><div class="cat-chips"><span class="chip">गणित</span><span class="chip">विज्ञान</span><span class="chip">अंग्रेज़ी</span></div><a class="cat-link">जुड़ें →</a></div>
+    <div class="cat-card alt"><div class="cat-icon-row"><div class="cat-icon"><i class="ti ti-device-laptop"></i></div><div class="cat-name">तकनीक व डेटा</div></div><p class="cat-desc">Python, डेटा साइंस, Excel — डिजिटल दुनिया का हुनर।</p><div class="cat-chips"><span class="chip">Python</span><span class="chip">डेटा साइंस</span><span class="chip">Excel</span></div><a class="cat-link">जुड़ें →</a></div>
+    <div class="cat-card"><div class="cat-icon-row"><div class="cat-icon"><i class="ti ti-compass"></i></div><div class="cat-name">करियर मार्गदर्शन</div></div><p class="cat-desc">CV बनाना, इंटरव्यू, करियर काउंसलिंग — सही दिशा मिले।</p><div class="cat-chips"><span class="chip">CV लिखना</span><span class="chip">इंटरव्यू</span><span class="chip">करियर सलाह</span></div><a class="cat-link">जुड़ें →</a></div>
+  </div>
+</section>
+
+<!-- HOW IT WORKS -->
+<section class="sec dark">
+  <p class="sec-label">कैसे काम करता है</p>
+  <h2 class="sec-title light">दर्ज करें, जुड़ें, कमाएँ</h2>
+  <p class="sec-sub light">पैसे कैसे मिलेंगे? कोई fraud तो नहीं? सब कुछ साफ़ है।</p>
+  <div class="how-grid">
+    <div class="how-card"><div class="how-step">कदम १</div><i class="ti ti-pencil how-icon-i"></i><div class="how-title">अपना हुनर दर्ज करें</div><div class="how-desc">WhatsApp पर बताएँ — आप क्या करती हैं, किस इलाक़े में हैं। बिल्कुल मुफ़्त।</div></div>
+    <div class="how-card"><div class="how-step">कदम २</div><i class="ti ti-users how-icon-i"></i><div class="how-title">ग्राहक जुड़ें</div><div class="how-desc">जो लोग आपकी service चाहते हैं वो सीधे WhatsApp पर बात करें।</div></div>
+    <div class="how-card"><div class="how-step">कदम ३</div><i class="ti ti-checklist how-icon-i"></i><div class="how-title">काम confirm करें</div><div class="how-desc">अपनी शर्तें खुद तय करें — दाम, समय, जगह। कोई दबाव नहीं।</div></div>
+    <div class="how-card"><div class="how-step">कदम ४</div><i class="ti ti-currency-rupee how-icon-i"></i><div class="how-title">UPI से पैसे पाएँ</div><div class="how-desc">PhonePe, GPay, या cash — जैसे चाहें। पैसे सीधे आपके पास।</div></div>
+  </div>
+</section>
+
+<!-- TRUST Q&A -->
+<section class="sec">
+  <p class="sec-label">आपका भरोसा हमारी ज़िम्मेदारी</p>
+  <h2 class="sec-title">मन में आने वाले सवाल</h2>
+  <div class="trust-grid">
+    <div class="trust-card"><div class="trust-icon"><i class="ti ti-shield-check"></i></div><div class="trust-title">क्या यह safe है?</div><div class="trust-desc">शक्ति महिलाओं के लिए बना मंच है। कोई भी बिना verification के नहीं जुड़ती।</div></div>
+    <div class="trust-card alt"><div class="trust-icon"><i class="ti ti-currency-rupee"></i></div><div class="trust-title">पैसे कैसे मिलेंगे?</div><div class="trust-desc">पैसे सीधे ग्राहक से आपको — UPI, PhonePe, GPay, या cash। कोई commission नहीं।</div></div>
+    <div class="trust-card"><div class="trust-icon"><i class="ti ti-device-mobile"></i></div><div class="trust-title">क्या smartphone चाहिए?</div><div class="trust-desc">सिर्फ WhatsApp चाहिए। कोई app download नहीं, बस message करें।</div></div>
+  </div>
+</section>
+
+<!-- PROVIDERS -->
+<section class="sec alt">
+  <p class="sec-label">शक्ति पर महिलाएँ</p>
+  <h2 class="sec-title">असली हुनर, असली महिलाएँ</h2>
+  <div class="prov-grid">
+    <div class="prov-card"><div class="prov-avatar av-sp">क</div><div class="prov-name">कमला देवी</div><div class="prov-skill">घर का अचार — आम, मिर्च, नींबू</div><div class="prov-desc">३० साल पुरानी रेसिपी। पहले महीने ₹४,२०० की कमाई।</div><div class="prov-loc"><i class="ti ti-map-pin" style="font-size:11px"></i> बरेली</div><a href="https://wa.me/91XXXXXXXXXX" class="prov-wa" target="_blank"><i class="ti ti-brand-whatsapp" style="font-size:13px"></i> order करें</a></div>
+    <div class="prov-card"><div class="prov-avatar av-p">स</div><div class="prov-name">सुनीता राजपूत</div><div class="prov-skill">मेहंदी — ब्राइडल व त्योहार</div><div class="prov-desc">१० साल का अनुभव। घर पर आती हैं।</div><div class="prov-loc"><i class="ti ti-map-pin" style="font-size:11px"></i> बरेली</div><a href="https://wa.me/91XXXXXXXXXX" class="prov-wa" target="_blank"><i class="ti ti-brand-whatsapp" style="font-size:13px"></i> बुक करें</a></div>
+    <div class="prov-card"><div class="prov-avatar av-g">र</div><div class="prov-name">रेखा शर्मा</div><div class="prov-skill">गणित ट्यूशन — कक्षा ६ से १२</div><div class="prov-desc">२०+ साल का अनुभव। ऑनलाइन भी।</div><div class="prov-loc"><i class="ti ti-map-pin" style="font-size:11px"></i> बरेली</div><a href="https://wa.me/91XXXXXXXXXX" class="prov-wa" target="_blank"><i class="ti ti-brand-whatsapp" style="font-size:13px"></i> जानें</a></div>
+    <div class="prov-card"><div class="prov-avatar av-go">अ</div><div class="prov-name">अंजलि कुमारी</div><div class="prov-skill">मेकअप आर्टिस्ट</div><div class="prov-desc">हर रंग के लिए professional मेकअप।</div><div class="prov-loc"><i class="ti ti-map-pin" style="font-size:11px"></i> बरेली</div><a href="https://wa.me/91XXXXXXXXXX" class="prov-wa" target="_blank"><i class="ti ti-brand-whatsapp" style="font-size:13px"></i> बुक करें</a></div>
+    <div class="prov-card"><div class="prov-avatar av-b">म</div><div class="prov-name">मीना देवी</div><div class="prov-skill">घर का खाना व टिफिन</div><div class="prov-desc">ताज़ा घर जैसा खाना, रोज़ाना टिफिन।</div><div class="prov-loc"><i class="ti ti-map-pin" style="font-size:11px"></i> लखनऊ</div><a href="https://wa.me/91XXXXXXXXXX" class="prov-wa" target="_blank"><i class="ti ti-brand-whatsapp" style="font-size:13px"></i> order करें</a></div>
+    <div class="prov-card"><div class="prov-avatar av-r">फ</div><div class="prov-name">फातिमा बेगम</div><div class="prov-skill">सिलाई व कस्टम कपड़े</div><div class="prov-desc">सलवार सूट, ब्लाउज़। ३ दिन में तैयार।</div><div class="prov-loc"><i class="ti ti-map-pin" style="font-size:11px"></i> कानपुर</div><a href="https://wa.me/91XXXXXXXXXX" class="prov-wa" target="_blank"><i class="ti ti-brand-whatsapp" style="font-size:13px"></i> order करें</a></div>
+  </div>
+</section>
+
+<!-- MOBILE CTA -->
+<div class="mobile-cta">
+  <div>
+    <div class="mobile-cta-text">अभी जुड़ें — बस एक message से</div>
+    <div class="mobile-cta-sub">कोई app नहीं, सिर्फ WhatsApp</div>
+  </div>
+  <a href="https://wa.me/91XXXXXXXXXX" class="btn-wa" target="_blank"><i class="ti ti-brand-whatsapp"></i> अभी WhatsApp करें</a>
+</div>
+
+<!-- JOIN -->
+<section class="join-section">
+  <div class="join-bg">
+    <svg width="360" height="360" viewBox="0 0 360 360" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <g fill="#FAF3E8">
+        <ellipse cx="180" cy="60" rx="13" ry="42" transform="rotate(0 180 180)"/>
+        <ellipse cx="180" cy="60" rx="13" ry="42" transform="rotate(45 180 180)"/>
+        <ellipse cx="180" cy="60" rx="13" ry="42" transform="rotate(90 180 180)"/>
+        <ellipse cx="180" cy="60" rx="13" ry="42" transform="rotate(135 180 180)"/>
+        <ellipse cx="180" cy="60" rx="13" ry="42" transform="rotate(180 180 180)"/>
+        <ellipse cx="180" cy="60" rx="13" ry="42" transform="rotate(225 180 180)"/>
+        <ellipse cx="180" cy="60" rx="13" ry="42" transform="rotate(270 180 180)"/>
+        <ellipse cx="180" cy="60" rx="13" ry="42" transform="rotate(315 180 180)"/>
+        <circle cx="180" cy="180" r="30"/>
+        <circle cx="180" cy="180" r="17"/>
+        <circle cx="180" cy="180" r="6"/>
+      </g>
+    </svg>
+  </div>
+  <h2 class="join-headline">शक्ति से जुड़ें</h2>
+  <p class="join-sub">दो तरीकों से जुड़ सकती हैं — जो आसान लगे वो चुनें</p>
+  <div class="join-tabs">
+    <div class="join-tab active">मेरे पास हुनर है</div>
+    <div class="join-tab">मुझे सीखना है</div>
+    <div class="join-tab">मुझे hire करना है</div>
+  </div>
+  <div class="join-options">
+    <a href="https://wa.me/91XXXXXXXXXX" class="join-wa-big" target="_blank">
+      <i class="ti ti-brand-whatsapp" style="font-size:20px"></i>
+      WhatsApp पर जुड़ें
+      <span style="font-size:12px;font-weight:400;opacity:0.85">सबसे आसान तरीका</span>
+    </a>
+    <div class="join-email-wrap">
+      <input class="join-input" type="email" placeholder="या ईमेल से जुड़ें"/>
+      <button class="join-btn">भेजें</button>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-logo">शक्ति<span>।</span></div>
+  <p class="footer-note">हर महिला के लिए। हर उम्र में। दुनिया के हर कोने से।</p>
+  <p class="footer-origin"><i class="ti ti-map-pin" style="font-size:12px"></i> बरेली, उ.प्र. से बना</p>
+</footer>
+
+</body>
+</html>
